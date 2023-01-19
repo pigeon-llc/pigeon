@@ -1,0 +1,23 @@
+name: Web
+on:
+  push:
+    paths:
+      - 'web/**'
+  pull_request:
+    paths:
+      - 'web/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        # install dependencies here
+    - name: Run tests
+      run: |
+        # run tests here
+    - name: Build
+      run: |
+        # build the web here

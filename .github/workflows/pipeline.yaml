@@ -1,0 +1,10 @@
+name: Pipeline
+on: [push, pull_request]
+jobs:
+  deploy:
+    needs: [core, server, desktop, mobile, web]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      run: |
+        # deploy the application here

@@ -34,3 +34,23 @@ This model keeps the main branch stable and only brings in new features that are
 
 Adapted __GitHub Actions__ tool for automating CI/CD pipelines (workflows)
 
+```
+CI/CD Workflow dependency graph:
+
+                                                     +-------------+
+                                                     |  Pipeline   |
+                                                     +-----/\------+
+                                                           ||
+                                                           ||
+                                                           ||
+                                                           ||
+       ____________________________________________________||_______________________________________________
+       _____________________________________________________________________________________________________
+       ||                       ||                       ||                      ||                       ||
++-------------+          +-------------+          +-------------+          +-------------+          +-------------+
+|    Core     |          |     Web     |          |   Mobile    |          |   Server    |          |   Desktop   |
++-------------+          +-------------+          +-------------+          +-------------+          +-------------+
+```
+
+The workflow structure above consists of five separate workflows, one for each directory in the repository (_core_, _server_, _desktop_, _mobile_, _web_)
+and one main workflow that depends on the successful completion of all the other workflows. Each workflow is triggered against changes in the corresponding directory, and the _pipeline_ workflow is triggered after all the other workflows have run successfully.
