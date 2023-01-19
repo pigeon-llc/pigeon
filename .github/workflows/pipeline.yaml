@@ -1,8 +1,13 @@
 name: Pipeline
-on: [push, pull_request]
+
+on:
+  workflow_run:
+    workflows: ["Core", "Server", "Desktop", "Mobile", "Web"]
+    types:
+      - completed
+
 jobs:
   deploy:
-    needs: [core, server, desktop, mobile, web]
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
